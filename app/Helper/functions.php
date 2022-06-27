@@ -63,9 +63,11 @@ function currencies()
     return $arr;
 }
 
+
 function currencyValue()
 {
-    return session()->get('currency') ?? \App\Models\Currency::first()['value'];
+    return  \App\Models\Currency::where('name_' . app()->getLocale(),session()->get('currency'))->value('value') ?? \App\Models\Currency::value('value');
+
 }
 
 function setting($key)

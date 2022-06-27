@@ -117,6 +117,7 @@
             <!--start cart and delete-->
 
             @foreach (Session::get('cart') as $item)
+                @php( $product = getProduct($item['product_id'])  )
                 <div class="cart_order py-4 position-relative">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-12 col-md-4">
@@ -133,7 +134,7 @@
                                         </div>
                                         <div class="">
                                             <span
-                                                class="main_bold">{{ mb_strimwidth( getProduct($item['product_id'])['name_' . app()->getLocale()], 0, 20, "...") }}</span>
+                                                class="main_bold">{{ mb_strimwidth( $product['name_' . app()->getLocale()], 0, 20, "...") }}</span>
                                             <br>
                                             <span class="main_bold">
                                                @lang('dashboard.size')  {{ getSize($item['size_id'])['name_' . app()->getLocale()] ?? '' }}
@@ -165,11 +166,11 @@
                                             <div class="">
                                                 <span class="main_bold">
 
-                                                    @if (hasDiscount(getProduct($item['product_id'])))
-                                                        {{ number_format((getProduct($item['product_id'])['price'] - getProduct($item['product_id'])['discount']) * $currencyValue, 3) }}
+                                                    @if (hasDiscount($product))
+                                                        {{ number_format(($product['price'] - $product['discount']) * $currencyValue, 3) }}
                                                         {{ Session::get('currency') }}
                                                     @else
-                                                        {{ number_format(getProduct($item['product_id'])['price'] * $currencyValue, 3) }}
+                                                        {{ number_format($product['price'] * $currencyValue, 3) }}
                                                         {{ Session::get('currency') }}
                                                     @endif
                                                 </span>
@@ -183,11 +184,11 @@
                                             </div>
                                             <div class="">
                                                 <span class="main_bold proPrice">
-                                                    @if (hasDiscount(getProduct($item['product_id'])))
-                                                        {{ number_format((getProduct($item['product_id'])['price'] - getProduct($item['product_id'])['discount']) * $currencyValue * $item['quantity'], 3) }}
+                                                    @if (hasDiscount($product))
+                                                        {{ number_format(($product['price'] - $product['discount']) * $currencyValue * $item['quantity'], 3) }}
                                                         {{ Session::get('currency') }}
                                                     @else
-                                                        {{ number_format(getProduct($item['product_id'])['price'] * $currencyValue * $item['quantity'], 3) }}
+                                                        {{ number_format($product['price'] * $currencyValue * $item['quantity'], 3) }}
                                                         {{ Session::get('currency') }}
                                                     @endif
                                                 </span>
@@ -288,16 +289,16 @@
                                                 <input id="coupon" type="hidden" name="coupon" value="">
                                             </div>
                                             @endif
-                                            @if ( setting('discount')  != 0)
+                                            @if ( $settings['discount']  != 0)
                                                 <div class="d-flex justify-content-between my-3">
                                                     <span class="main_bold">@lang('website.discount')
-                                                        ({{ setting('discount') }} %) :</span>
+                                                        ({{ $settings['discount'] }} %) :</span>
                                                     <span class="main_bold discount" id="discountSpan"></span>
                                                     <input id="discount" type="hidden" name="discount" value="">
                                                 </div>
                                             @endif
                                             <div class="d-flex justify-content-between my-3">
-                                                <span class="main_bold">@lang('website.vat') ({{ setting('VAT') }}%) :</span>
+                                                <span class="main_bold">@lang('website.vat') ({{ $settings['VAT'] }}%) :</span>
                                                 <span class="main_bold vat" id="vatSpan"></span>
                                                 <input id="vat" type="hidden" name="vat" value="">
                                             </div>
@@ -357,11 +358,11 @@
         $('.coupon').text(coupon.toFixed(3) + ' {{ Session::get('currency') }}');
 
         let discount = subTotal * parseFloat(
-            '{{ setting('discount') / 100 }}  * $currencyValue ');
+            '{{ $settings['discount'] / 100 }}  * $currencyValue ');
         $('.discount').text(discount.toFixed(3) + ' {{ Session::get('currency') }}');
 
         let vat = ((subTotal - discount) * parseFloat(
-            '{{ setting('VAT') / 100 }} * $currencyValue'));
+            '{{ $settings['VAT'] / 100 }} * $currencyValue'));
         $('.vat').text(vat.toFixed(3) + ' {{ Session::get('currency') }}');
 
         let deliveryCost = parseFloat('{{ getDeliveryCharge() * $currencyValue }} ');

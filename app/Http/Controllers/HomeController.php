@@ -181,27 +181,24 @@ class HomeController extends Controller
         $price[0] =  $request->min_price ?? 0;
         $price[1] =  $request->max_price ?? 10000;
 
-        $started_price = $price[1] * Currency::where('name_en', currencyValue())->value('value');
+        $currencyValue = currencyValue();
 
-        $end_price =  Currency::where('name_en', currencyValue())->value('value');
-
-        dd($end_price);
-
+        $started_price = $price[0] * $currencyValue;
+        $end_price = $price[1] * $currencyValue;
         if ($request->has('category')) {
             $category = $request->get('category');
         } else {
             $category = Category::where('id', '>', 0)->pluck('id')->toArray();
         }
+
         if ($request->has('color')) {
             $color = $request->get('color');
         } else {
             $color = Color::where('id', '>', 0)->where('display', 1)->pluck('id')->toArray();
         }
 
-        $products = Product::where('quantity', '>', 0)->whereBetween('price', [
-            $price[0] *  Currency::where('name_en', Session::get('currency'))->value('value') ,
-            $price[1] *  Currency::where('name_en', Session::get('currency'))->value('value')
-        ]);
+        $products = Product::with(['category','images' , 'reviews' , 'color'])->where('quantity', '>', 0)
+            ->whereBetween('price', [ $started_price , $end_price]);
 
         if ($request->has('search')) {
             $name = $request->get('search') ?? '';
@@ -213,12 +210,10 @@ class HomeController extends Controller
         if ($request->category) {
             $products->Join('color_products', 'color_products.product_id', '=', 'products.id', 'left outer')
                 ->where(function ($query) use ($category, $color) {
-                    $query->WhereIn('category_id', $category);
+                    $query->whereIn('category_id' , $category);
                 });
         }
         $products->select('*', 'products.id as id')->groupBy('products.id');
-
-
         if ($request->has('key')) {
             if ($request->get('key') == "HP") {
                 $products = $products->orderby('price', 'Desc');
@@ -236,8 +231,7 @@ class HomeController extends Controller
             return redirect()->route('home')->with('info', __('website.noProducts'));
         }
 
-        return view(
-            'website.categories.index',
+        return view('website.categories.index',
             compact('products', 'price', 'categories', 'colors')
         );
     }

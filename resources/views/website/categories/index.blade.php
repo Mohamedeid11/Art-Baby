@@ -84,7 +84,7 @@
                             <div class="my-3">
                                 <div class="row">
                                     <div class="col-2">
-                                        <input type="checkbox" class="mx-3 point" name="category[]" value="{{ $category['id'] }}" @if (in_array($category['id'], request()->input('category') ?? $categories->toArray())) checked @endif>
+                                        <input type="checkbox" class="mx-3 point" name="category[]" value="{{ $category['id'] }}"@if (in_array($category['id'], request()->input('category') ?? $categories->toArray())) checked @endif>
                                     </div>
                                     <div class="col">
                                         <label class="font-weight-bold">

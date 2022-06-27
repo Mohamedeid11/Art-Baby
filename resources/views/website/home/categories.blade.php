@@ -15,7 +15,7 @@
                                             @foreach ($categories as $category)
                                                 <div class="col-12 col-md-4">
                                                     <a style="text-decoration: none"
-                                                        href="{{ route('search', ['category'=>$category['id']]) }}">
+                                                        href="{{ route('search', ['category'=>[$category->id]]) }}">
                                                         <div class="text-center my-4 border">
                                                             <button type="submit" class="dropdown-item" name="key"
                                                                 value="{{ $category['id'] }}" form="searchCategories">

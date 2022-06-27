@@ -82,7 +82,7 @@
                                                     <label for="country_id">{{ __('website.country') }}</label>
                                                     <select id="country_id" name="country_id" required class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                                         @foreach($Countries as $Country)
-                                                            <option {{ $Country['id'] == auth('client')->user()->country_id ? 'selected' : '' }} 
+                                                            <option {{ $Country['id'] == auth('client')->user()->country_id ? 'selected' : '' }}
                                                                 value="{{ $Country['id'] }}">{{ $Country['name_' . app()->getLocale()] }}</option>
                                                         @endforeach
                                                     </select>
@@ -390,7 +390,7 @@
                                             @if ($currentOrder->discount > 0)
                                             <div class="sub-total d-flex justify-content-between my-2">
                                                 <span class="my_bold">@lang('website.discount')
-                                                    ({{ setting('discount') }}%)
+                                                    ({{ $settings['discount']}}%)
                                                     :</span>
                                                 <span class="my_bold">
                                                     {{ $currentOrder->discount }}</span>
@@ -405,7 +405,7 @@
                                             </div>
                                             @endif
                                             <div class="sub-total d-flex justify-content-between my-2">
-                                                <span class="my_bold">@lang('website.vat') ({{ setting('VAT') }} %))
+                                                <span class="my_bold">@lang('website.vat') ({{ $settings['VAT'] }} %))
                                                     :</span>
                                                 <span class="my_bold"> {{ $currentOrder->vat }}</span>
                                             </div>
@@ -525,7 +525,7 @@
                                             </div>
                                             @if ($previousOrder->discount > 0)
                                             <div class="sub-total d-flex justify-content-between my-2">
-                                                <span class="my_bold">Discount({{ setting('discount') }}%):</span>
+                                                <span class="my_bold">Discount({{ $settings['discount']}}%):</span>
                                                 <span class="my_bold">
                                                     {{ $previousOrder->discount }}</span>
                                             </div>
@@ -539,7 +539,7 @@
                                             </div>
                                             @endif
                                             <div class="sub-total d-flex justify-content-between my-2">
-                                                <span class="my_bold">Vat({{ setting('VAT') }}%) :</span>
+                                                <span class="my_bold">Vat({{ $settings['VAT'] }}%) :</span>
                                                 <span class="my_bold"> {{ $previousOrder->vat }}</span>
                                             </div>
                                             <div class="sub-total d-flex justify-content-between my-2">

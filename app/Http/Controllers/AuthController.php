@@ -77,10 +77,12 @@ class AuthController extends Controller
 
     public function profile()
     {
-        $currentOrder = Order::where('client_id', auth('client')->user()->id)->whereIn('status', [9, 0, 1])->with(['orderProducts'])->orderBy('created_at', 'desc')->first();
-        $previousOrder = Order::where([['client_id', auth('client')->user()->id]])->whereIn('status', [2, 10])->with(['orderProducts'])->orderBy('created_at', 'desc')->first();
-        $favourit = Favorite::where('client_id', auth('client')->user()->id)->get();
-        $client = Client::where('id', auth('client')->user()->id)->first();
+        $client_id  = auth('client')->user()->id;
+
+        $currentOrder = Order::where('client_id', $client_id)->whereIn('status', [9, 0, 1])->with(['orderProducts'])->orderBy('created_at', 'desc')->first();
+        $previousOrder = Order::where([['client_id', $client_id]])->whereIn('status', [2, 10])->with(['orderProducts'])->orderBy('created_at', 'desc')->first();
+        $favourit = Favorite::where('client_id', $client_id)->get();
+        $client =auth('client')->user();
         $Countries = Country::where('display',1)->get();
         return view('website.profile.myProfile', compact('currentOrder', 'previousOrder', 'client', 'favourit','Countries'));
     }

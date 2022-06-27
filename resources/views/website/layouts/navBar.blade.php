@@ -56,12 +56,12 @@
                 <div class="d-flex justify-content-center justify-content-md-start align-items-center">
                     <div class="dropdown lamers">
                         <button sty class="btn btn-secondary dropdown-toggle back_me border-0 second_color my_bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ session()->get('currency') }}
+                            {{ Session::get('currency') ?? $currencyName }}
 
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             @foreach (currencies() as $currency)
-                            <a style="@if (app()->isLocale('ar')) text-align: right; @endif" class="dropdown-item" href="{{ route('currency', $currency) }}">{{ $currency }}</a>
+                            <a style="@if (app()->isLocale('ar')) text-align: right; @endif" class="dropdown-item" href="{{ route('currency', $currency ) }}">{{ $currency }}</a>
                             @endforeach
                         </ul>
                     </div>
@@ -140,7 +140,7 @@
                         </button>
                         <ul style="cursor: pointer;" class="dropdown-menu" aria-labelledby="dropdownMenuButton1" @if (app()->isLocale('ar')) dir="rtl" @endif>
                             @if (Auth::guard('client')->check())
-                            <p class="font-weight-bold text-center">@lang('website.welcome') {{ getUsername() }}</p>
+                            <p class="font-weight-bold text-center">@lang('website.welcome') {{auth('client')->user()->first_name }}</p>
                             @endif
                             <a style="@if (app()->isLocale('ar')) text-align: right; @endif" class="dropdown-item p-2" href="{{ route('home') }}"><i class="icon-home {{ app()->isLocale('ar') ?  'ms-2' :  'me-2' }} second_color"></i><span class="font-weight-bold">@lang('website.home')</span></a>
                             <a style="@if (app()->isLocale('ar')) text-align: right; @endif" class="dropdown-item p-2" href="{{ route('categories') }}"><i class="icon-view-tile {{ app()->isLocale('ar') ?  'ms-2' :  'me-2' }} second_color"></i><span class="font-weight-bold">@lang('website.categories')</span></a>

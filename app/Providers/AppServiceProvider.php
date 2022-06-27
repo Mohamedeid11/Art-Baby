@@ -31,14 +31,18 @@ class AppServiceProvider extends ServiceProvider
         //     \URL::forceScheme('https');
         // }
 
-        $currencyValue  = session()->get('currency') ?? \App\Models\Currency::value('value');
+        $currencyValue  =  \App\Models\Currency::where('name_' . app()->getLocale(),session()->get('currency'))->value('value') ?? \App\Models\Currency::value('value');
+
+        $getcurrency  = session()->get('currency') ?? \App\Models\Currency::where('value', $currencyValue)->first();
+
+        $currencyName = $getcurrency['name_' . app()->getLocale()];
 
         $settings  = Setting::get()->keyBy('key');
         foreach ($settings as $key => $item){
             $settings[$key] = $item->value ;
         };
 
-        View::share(['currencyValue' => $currencyValue , 'settings' => $settings ] );
+        View::share(['currencyValue' => $currencyValue , 'settings' => $settings ,'currencyName' => $currencyName , ] );
 
 
         Schema::defaultStringLength(191);

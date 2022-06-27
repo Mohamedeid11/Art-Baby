@@ -146,8 +146,8 @@ class CartController extends Controller
         $address = Address::where([['id', $address_id],['client_id', auth('client')->user()->id]])->first();
         if ($address) {
             $paymentMethods = PaymentMethods::where('display', 1)->get();
-            return view('website.cart.confirm',
-                compact('address', 'paymentMethods'));
+
+            return view('website.cart.confirm', compact('address', 'paymentMethods'));
         }
         return abort(404);
     }

@@ -28,10 +28,10 @@
                                             @if (hasDiscount($product))
 
                                             {{ number_format(($product['price'] - $product['discount']) * $currencyValue, 3) }}
-                                            {{ Session::get('currency') }}
+                                            {{ Session::get('currency') ?? $currencyName }}
                                             @else
                                             {{ number_format($product['price'] * $currencyValue, 3) }}
-                                            {{ Session::get('currency') }}
+                                            {{ Session::get('currency') ?? $currencyName }}
                                             @endif
                                         </span>
                                     </div>
@@ -118,10 +118,10 @@
                                 <span class="d-block">
                                     @if (hasDiscount($product))
                                     {{ number_format(($product['price'] - $product['discount']) * $currencyValue, 3) }}
-                                    {{ Session::get('currency') }}
+                                    {{ Session::get('currency') ?? $currencyName }}
                                     @else
                                     {{ number_format($product['price'] * $currencyValue, 3) }}
-                                    {{ Session::get('currency') }}
+                                    {{ Session::get('currency') ?? $currencyName }}
                                     @endif
                                 </span>
 
