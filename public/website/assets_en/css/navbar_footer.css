@@ -1,0 +1,105 @@
+/*start upperbar*/
+.icon_upper{
+    color: #FFF;
+}
+.navbar .dropdown-item:hover{
+    background: var(--main--color);
+    color: #000 !important;
+    -weebkit-transition: all 0.3s ease-in-out;
+    -noz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.btn-check:active+.btn-secondary, .btn-check:checked+.btn-secondary, .btn-secondary.active, .btn-secondary:active, .show>.btn-secondary.dropdown-toggle{
+    background: transparent;
+    color: var(--second--color)
+}
+.btn-check:active+.btn-secondary:focus, .btn-check:checked+.btn-secondary:focus, .btn-secondary.active:focus, .btn-secondary:active:focus, .show>.btn-secondary.dropdown-toggle:focus{
+    box-shadow: none
+}
+.btn-check:focus+.btn-secondary, .btn-secondary:focus{
+    background: transparent;
+    color: var(--second--color);
+    box-shadow: none
+}
+.my_hight_border{
+    height: 30px;
+    width: 1px;
+    border: 1px solid var(--second--color)
+}
+.navbar .btn-secondary:hover{
+    color: var(--second--color);
+    background: transparent
+}
+.navbar .dropdown-toggle::after,
+.navbar .nula .dropdown-toggle::after{
+    display: none
+}
+.inside_hover{
+    position: absolute;
+    width: 500px;
+    right: -150px;
+    top: 60px;
+    /*background: rgba(0, 0, 0, .3)*/
+    background: #FFF;
+}
+.hover_block{
+    display: none
+}
+.hover_none{
+    display: block;
+}
+.tiny_size{
+    width: 25px;
+    height: 25px;
+    background: var(--main--color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+/*start popup*/
+.popup{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    background-color: rgba(187, 187, 187, 0.8);
+    display: none
+}
+.popup .insert{
+    padding: 20px;
+    width: 400px;
+    height: 250px
+}
+.popup insert_1{
+    padding: 20px;
+    width: 500px;
+    height: 400px
+}
+.popup .insert_1.text-center.bg-white.d-flex.justify-content-center.align-items-center.p-4{
+    width: 500px
+}
+/*start footer*/
+.link_footer{
+    color: #FFF;
+}
+.link_footer:hover{
+    color: var(--main--color);
+}
+footer li.pb-2{
+    border-bottom: 2px solid var(--main--color);
+}
+.icon_foot{
+    color: var(--main--color);
+}
+.icon_foot:hover{
+    color: #FFF;
+}
+
+
+
+

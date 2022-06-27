@@ -1,0 +1,376 @@
+@import "style.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+
+/*default class*/
+body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.transition-me {
+    -weebkit-transition: all 0.3s ease-in-out;
+    -noz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.index_over {
+    z-index: 100
+}
+
+button:focus:not(:focus-visible),
+button,
+select,
+input,
+textarea {
+    outline: none
+}
+
+.rounded {
+    border-radius: 8px !important
+}
+
+.carousel-control-next:focus, .carousel-control-next:hover, .carousel-control-prev:focus, .carousel-control-prev:hover,
+.carousel-control-next, .carousel-control-prev {
+    opacity: 1
+}
+
+.point {
+    cursor: pointer;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.teny_font {
+    font-size: 14px
+}
+
+.back_me {
+    background: transparent
+}
+
+fieldset {
+    display: block;
+    border-width: 2px !important;
+    border-style: groove !important;
+    border-color: threedface !important;
+    border-image: initial !important;
+}
+
+fieldset > legend {
+    margin-left: 30px
+}
+
+legend {
+    float: none;
+    width: auto
+}
+
+/*main-class*/
+:root {
+    --main--color: #8fc7c0;
+    --second--color: #e24b30;
+}
+
+.main_color {
+    color: var(--main--color);
+}
+
+.second_color {
+    color: var(--second--color);
+}
+
+.main_bg {
+    background: var(--main--color);
+}
+
+.second_bg {
+    background: var(--second--color);
+}
+
+.main_border {
+    border: 1px solid var(--main--color);
+}
+
+.my_border {
+    border: 1px solid rgba(255, 255, 255, 0.3)
+}
+
+.my_bold {
+    font-weight: 700;
+    padding: inherit;
+}
+
+.main_link {
+    color: #FFF;
+}
+
+.main_link:hover {
+    color: var(--main--color);
+}
+
+.second_link {
+    color: var(--main--color);
+}
+
+.second_link:hover {
+    color: var(--second--color);
+}
+
+.red_button {
+    color: #FFF;
+    background: red;
+    width: 100%;
+}
+
+.main_button {
+    color: #FFF;
+    background: var(--main--color)
+}
+
+.main_button:hover {
+    color: #FFF;
+    background: var(--second--color)
+}
+
+.main_bt {
+    color: #FFF;
+    background: var(--second--color)
+}
+
+.main_bt:hover {
+    color: var(--second--color);
+    background: #ffcfd0
+}
+
+.second_bt {
+    color: #000;
+    background: #ffcfd0;
+}
+
+.second_bt:hover {
+    color: #000;
+    background: #FFF;
+}
+
+.second_butten {
+    color: #FFF;
+    font-weight: bold;
+    background: var(--second--color);
+}
+
+.second_butten:hover {
+    color: #FFF;
+    font-weight: bold;
+    background: var(--main--color)
+}
+
+/*start main_slider*/
+.slide_np {
+    width: 75px;
+    height: 75px;
+    background: var(--main--color);
+    color: #FFF;
+    border-radius: 8px
+}
+
+.slide_np:hover {
+    background: var(--second--color);
+    color: #FFF;
+}
+
+.main_slid .carousel-indicators {
+    bottom: -60px;
+}
+
+.main_slid .carousel-indicators button {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 1px solid var(--second--color);
+}
+
+.main_slid .carousel-indicators .active {
+    background: var(--second--color);
+    border: 1px solid var(--second--color);
+}
+
+/*start featured*/
+.featured .position-absolute.siden .slide_np {
+    height: 60px;
+    width: 60px;
+    border: 1px solid #AAA;
+    position: absolute
+}
+
+.featured .position-absolute.siden {
+    top: -55px;
+    right: 50%
+}
+
+.featured .position-absolute.siden .carousel-control-next, .featured .position-absolute.siden .carousel-control-prev {
+    margin: 35px
+}
+
+/*start selling*/
+.selling .nav-tabs .nav-link {
+    border: 0px;
+    color: #FFF;
+    font-size: 25px
+}
+
+.selling .nav-tabs {
+    border: 0px
+}
+
+.selling ul#myTab {
+    background: var(--main--color);
+}
+
+
+.selling .nav-tabs .nav-link.active{
+    background: var(--second--color);
+    color: #FFF;
+    font-weight: 700;
+}
+/*start our new*/
+.news .collection {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+/*start category*/
+.category .ui-slider-horizontal {
+    height: 8px
+}
+
+.category .ui-widget-content {
+    background: var(--main--color);
+    border: none
+}
+
+.category .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    background: var(--main--color);
+    height: 20px;
+    width: 20px
+}
+
+.category .product .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    background: var(--main--color);
+}
+
+.category span.ui-slider-handle.ui-corner-all.ui-state-default {
+    outline: none
+}
+
+.category .ui-slider-horizontal .ui-slider-handle {
+    top: -5px
+}
+
+.category .ui-widget-header {
+    background: #DDDDDD
+}
+
+/*start product_details*/
+.description .nav-tabs .nav-item.show .nav-link, .description .nav-tabs .nav-link.active {
+    background: var(--main--color);
+    color: #FFF !important;
+    padding: 10px 25px
+}
+
+.description .nav-tabs .nav-link,
+.description .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    color: #000
+}
+
+/*start cart*/
+.color_cart {
+    background: #EEE;
+}
+
+.text-line {
+    height: 3px
+}
+
+.cart .cart_order .mx-0.point.quantity-plus.p-0.w-100 {
+    height: 25px
+}
+
+.cart .cart_order .mx-0.point.quantity-minus.p-0.w-100 {
+    height: 25px
+}
+
+.cart .cart_order .row.counter.main_border.rounded.align-items-center {
+    height: 50px;
+    width: 100px
+}
+
+i.icon-bin.h3.transition-me.position-absolute.point {
+    top: 0px;
+    right: 85px
+}
+
+/*start profile*/
+.profile .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: var(--main--color);
+    color: #FFF;
+}
+
+.profile .nav-pills .nav-link {
+    color: #000
+}
+
+/*start my_profile*/
+.profile .nav-pills .nav-link.active {
+    background: var(--main--color);
+    color: #FFF;
+    padding: 15px
+}
+
+.profile .nav-pills .nav-link {
+    color: #000;
+}
+
+.current-inside.py-2.shadow-sm.text-center {
+    display: none
+}
+
+/*start contact_us*/
+.right_border {
+    border-right: 4px solid #CCC;
+    padding-right: 15px
+}
+
+/*start login*/
+i.icon-user.main_color.h1.position-absolute,
+i.icon-lock.main_color.h1.position-absolute,
+i.icon-mobile.main_color.h1.position-absolute {
+    left: 12px;
+    top: 17px;
+}
+
+/* last edit */
+.selling .fade:not(.show) {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
